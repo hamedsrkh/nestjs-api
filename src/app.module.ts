@@ -8,7 +8,10 @@ import { ConfigModule } from '@nestjs/config';
 @Module({
   imports: [
     ConfigModule.forRoot(),
-    MongooseModule.forRoot(process.env.DATABASE_CONNECTION),
+    MongooseModule.forRoot(
+      process.env.DATABASE_CONNECTION ||
+        'mongodb+srv://hamed_wishwork:HamedsaaTest@database.5dpmv.mongodb.net/wishwork?retryWrites=true&w=majority\n',
+    ),
     UsersModule,
   ],
   controllers: [AppController],
